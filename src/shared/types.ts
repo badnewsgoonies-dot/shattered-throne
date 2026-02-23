@@ -340,6 +340,7 @@ export interface WeaponData {
   element?: Element;
   effectiveAgainst?: MovementType[];
   specialEffect?: string;
+  forgeBonuses?: { might: number; hit: number; crit: number };
   cost: number;
   rank: string;
 }
