@@ -1,4 +1,4 @@
-import { CombatLogEntry, TurnPhase } from '../../shared/types';
+import { CombatLogEntry, TurnPhase } from '../shared/types';
 
 export function createLogEntry(
   turnNumber: number,

@@ -4,7 +4,7 @@ import {
   GridMap,
   CombatResult,
   CombatRound,
-} from '../../shared/types';
+} from '../shared/types';
 
 export function executeSkill(
   user: Unit,

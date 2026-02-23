@@ -20,7 +20,7 @@ import {
   SkillDefinition,
   SkillType,
   AoEPattern,
-} from '../../../shared/types';
+} from '../../shared/types';
 
 export function makeStats(overrides: Partial<Stats> = {}): Stats {
   return {
@@ -66,7 +66,8 @@ export function makeInventory(): Inventory {
 
 export function makeUnit(overrides: Partial<Unit> = {}): Unit {
   const stats = makeStats(overrides.currentStats);
-  return {
+  const { currentStats: _cs, ...restOverrides } = overrides;
+  const base: Unit = {
     id: 'unit-1',
     name: 'Test Unit',
     characterId: 'char-1',
@@ -91,9 +92,8 @@ export function makeUnit(overrides: Partial<Unit> = {}): Unit {
     supportPoints: {},
     killCount: 0,
     movementType: MovementType.Foot,
-    ...overrides,
-    currentStats: { ...stats, ...(overrides.currentStats ?? {}) },
   };
+  return { ...base, ...restOverrides, currentStats: stats };
 }
 
 export function makeWeapon(overrides: Partial<WeaponData> = {}): WeaponData {

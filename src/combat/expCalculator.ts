@@ -1,4 +1,4 @@
-import { Unit, KILL_EXP_BONUS } from '../../shared/types';
+import { Unit, KILL_EXP_BONUS } from '../shared/types';
 
 export function calculateExpGain(
   attacker: Unit,

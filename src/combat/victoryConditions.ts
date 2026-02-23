@@ -4,7 +4,7 @@ import {
   Unit,
   VictoryCondition,
   DefeatCondition,
-} from '../../shared/types';
+} from '../shared/types';
 
 export function checkVictoryConditions(
   conditions: VictoryConditionDef[],

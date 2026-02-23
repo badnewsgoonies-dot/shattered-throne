@@ -6,7 +6,7 @@ import {
   HEIGHT_ADVANTAGE_HIT_BONUS,
   HEIGHT_DISADVANTAGE_HIT_PENALTY,
   SUPPORT_HIT_EVADE_BONUS_PER_ALLY,
-} from '../../shared/types';
+} from '../shared/types';
 
 function clamp(value: number, min: number, max: number): number {
   return Math.max(min, Math.min(max, value));

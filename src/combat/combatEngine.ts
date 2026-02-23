@@ -13,7 +13,7 @@ import {
   DefeatConditionDef,
   ICombatEngine,
   DOUBLE_ATTACK_SPEED_THRESHOLD,
-} from '../../shared/types';
+} from '../shared/types';
 import { calculateDamageWithHeight, applyCritical } from './damageCalculator';
 import { calculateHitRate, calculateCritRate } from './hitCalculator';
 import { getWeaponTriangleBonus, getMagicTriangleBonus } from './weaponTriangle';

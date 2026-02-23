@@ -4,7 +4,7 @@ import {
   TerrainData,
   WeaponType,
   CRIT_MULTIPLIER,
-} from '../../shared/types';
+} from '../shared/types';
 import { getWeaponTriangleBonus, getMagicTriangleBonus } from './weaponTriangle';
 
 const MAGIC_WEAPON_TYPES = new Set([

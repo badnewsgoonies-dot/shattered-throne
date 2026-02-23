@@ -4,7 +4,7 @@ import {
   TurnPhase,
   UndoAction,
   Position,
-} from '../../shared/types';
+} from '../shared/types';
 
 export function createInitialCombatState(): CombatState {
   return {

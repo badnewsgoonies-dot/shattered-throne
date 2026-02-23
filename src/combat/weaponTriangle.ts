@@ -5,7 +5,7 @@ import {
   WEAPON_TRIANGLE_DAMAGE_BONUS,
   MAGIC_TRIANGLE_HIT_BONUS,
   MAGIC_TRIANGLE_DAMAGE_BONUS,
-} from '../../shared/types';
+} from '../shared/types';
 
 export interface TriangleBonus {
   hitBonus: number;
