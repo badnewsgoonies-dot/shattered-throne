@@ -473,6 +473,54 @@ export function renderFrame(
 // Export all
 // ============================================================
 
-export {
-  initializeSystems as default,
-};
+// ============================================================
+// Convenience aliases & browser entry
+// ============================================================
+
+export const createGameSystems = initializeSystems;
+
+export function initGame(canvas: HTMLCanvasElement): { systems: GameSystems; state: GameState } {
+  const systems = initializeSystems();
+  systems.renderer.init(canvas);
+  systems.audio.init();
+  systems.tutorial.init({
+    seenTutorials: [],
+    currentTutorialId: null,
+    currentStepId: null,
+    hintsEnabled: true,
+    lastActionTimestamp: Date.now(),
+  });
+
+  const state = createInitialGameState(systems);
+  return { systems, state };
+}
+
+export function main(): void {
+  const canvas = document.getElementById('game-canvas') as HTMLCanvasElement | null;
+  if (!canvas) {
+    throw new Error('Canvas element #game-canvas not found');
+  }
+
+  const { systems, state } = initGame(canvas);
+
+  let currentState = state;
+
+  function gameLoop(): void {
+    renderFrame(systems, currentState);
+    requestAnimationFrame(gameLoop);
+  }
+
+  requestAnimationFrame(gameLoop);
+
+  // Expose to console for debugging
+  (window as unknown as Record<string, unknown>).__shatteredThrone = {
+    systems,
+    get state() { return currentState; },
+    startChapter: (id: string) => { currentState = startChapter(systems, currentState, id); },
+    saveGame: (slot: number) => { saveGame(systems, currentState, slot); },
+    loadGame: (slot: number) => {
+      const loaded = loadGame(systems, slot);
+      if (loaded) currentState = loaded;
+    },
+  };
+}
